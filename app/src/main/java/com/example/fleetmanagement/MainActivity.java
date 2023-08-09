@@ -99,6 +99,42 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnAns.setOnClickListener(view -> {
+            if(Add|Sub|Mul|Div) {
+                val2=Float.parseFloat(txtAnswer.getText() + "");
+            }
+
+            if(Add) {
+                txtAnswer.setText(val1+val2+"");
+                Add=false;
+            }
+
+            if(Sub) {
+                txtAnswer.setText(val1-val2+"");
+                Sub=false;
+            }
+
+            if(Div) {
+                txtAnswer.setText(val1/val2+"");
+                Div=false;
+            }
+
+            if(Mul) {
+                txtAnswer.setText(val1*val2+"");
+                Mul=false;
+            }
+        });
+
+        btnReset.setOnClickListener(view -> {
+            txtAnswer.setText("");
+            val1=0.0;
+            val2=0.0;
+            Add=false;
+            Sub=false;
+            Div=false;
+            Mul=false;
+        });
+
     }
 
     private void setViewIDs()
