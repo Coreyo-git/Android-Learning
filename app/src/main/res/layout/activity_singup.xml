@@ -23,7 +23,7 @@
         android:id="@+id/phoneNumberEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPhonetic"
+        android:inputType="phone"
         android:layout_marginTop="16dp"
         android:hint="Phone Number" />
     <EditText
@@ -39,4 +39,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:text="Sign Up" />
+    <Button
+        android:id="@+id/gotoLoginButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Already Registered?"
+        android:background="#FF5733"
+        android:textColor="#FFFFFF"/>
 </LinearLayout>

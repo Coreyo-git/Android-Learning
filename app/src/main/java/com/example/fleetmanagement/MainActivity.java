@@ -3,10 +3,9 @@ package com.example.fleetmanagement;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.ui.AppBarConfiguration;
+
 import android.widget.TextView;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.fleetmanagement.databinding.ActivityMainBinding;
 
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         signupButton.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this,
-                    SingupActivity.class);
+                    SignupActivity.class);
             startActivity(intent);
         });
     }
