@@ -13,6 +13,11 @@
         android:theme="@style/Theme.Fleety"
         tools:targetApi="31">
         <activity
+            android:name=".VehicleListActivity"
+            android:exported="false"
+            android:label="@string/title_activity_vehicle_list"
+            android:theme="@style/Theme.Fleety" />
+        <activity
             android:name=".SignupActivity"
             android:exported="false" />
         <activity
