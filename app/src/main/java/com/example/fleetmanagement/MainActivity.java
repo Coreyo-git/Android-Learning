@@ -7,33 +7,36 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Button;
 
+import com.example.fleetmanagement.Utils.SharedPrefManager;
 import com.example.fleetmanagement.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
-
     private TextView titleTextView;
     private Button loginButton, signupButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        setViewIds();
-
-        loginButton.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this,
-                    LoginActivity.class);
+        if(SharedPrefManager.isLoggedIn()) {
+            Intent intent = new Intent(MainActivity.this, VehicleListActivity.class);
             startActivity(intent);
-        });
+        } else {
+            setContentView(R.layout.activity_main);
 
-        signupButton.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this,
-                    SignupActivity.class);
-            startActivity(intent);
-        });
+            setViewIds();
+
+            loginButton.setOnClickListener(view -> {
+                Intent intent = new Intent(MainActivity.this,
+                        LoginActivity.class);
+                startActivity(intent);
+            });
+
+            signupButton.setOnClickListener(view -> {
+                Intent intent = new Intent(MainActivity.this,
+                        SignupActivity.class);
+                startActivity(intent);
+            });
+        }
     }
 
     private void setViewIds()

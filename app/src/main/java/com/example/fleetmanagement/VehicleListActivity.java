@@ -26,9 +26,11 @@ public class VehicleListActivity extends AppCompatActivity {
 
             String vehicleName = vehicleList.get(position).getName();
             String vehicleType = vehicleList.get(position).getType();
+
             Intent intent = new Intent(VehicleListActivity.this, VehicleDetailsActivity.class);
             intent.putExtra("vehicleName", vehicleName);
             intent.putExtra("vehicleType", vehicleType);
+
             startActivity(intent);
         });
     }
