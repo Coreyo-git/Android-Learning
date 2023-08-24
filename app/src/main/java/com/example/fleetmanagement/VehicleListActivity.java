@@ -19,6 +19,7 @@ public class VehicleListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private VehicleAdapter vehicleAdapter;
     private Button btnAddNewVehicle;
+    private Button btnLogOut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +27,7 @@ public class VehicleListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vehicle_list);
         recyclerView = findViewById(R.id.recyclerView);
         btnAddNewVehicle = findViewById(R.id.btnAddVehicle);
+        btnLogOut = findViewById(R.id.btnLogout);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         vehicleList = generateDummyData(); // Replace this with your actual vehicle data
         vehicleAdapter = new VehicleAdapter(vehicleList);
@@ -53,6 +55,11 @@ public class VehicleListActivity extends AppCompatActivity {
         }else {
             btnAddNewVehicle.setVisibility(View.GONE);
         }
+
+        // Calls logout
+        btnLogOut.setOnClickListener(view -> {
+            handleLogout();
+        });
     }
 
     private void manageNewVehicleFunctionality() {
@@ -75,6 +82,13 @@ public class VehicleListActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         builder.setNegativeButton("Cancel", null);
         dialog.show();
+    }
+
+    public void handleLogout() {
+        SharedPrefManager.setAdmin(false);
+        SharedPrefManager.setLoginState(false);
+        Intent intent = new Intent(VehicleListActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 
     // Replace this method with your actual vehicle data

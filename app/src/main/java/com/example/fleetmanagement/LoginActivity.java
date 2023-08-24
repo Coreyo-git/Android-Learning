@@ -15,6 +15,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText emailEditText;
     private EditText passwordEditText;
     private Button loginButton;
+    private Button gotoSignUpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,12 @@ public class LoginActivity extends AppCompatActivity {
                 passwordEditText.setError("Invalid password");
             }
         });
+
+        gotoSignUpButton.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+            startActivity(intent);
+
+        });
     }
 
     private void setViewIds()
@@ -55,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         loginButton = findViewById(R.id.loginButton);
+        gotoSignUpButton = findViewById(R.id.gotoSignUpButton);
     }
 
     private boolean isValidCredentials(String email, String password) {
