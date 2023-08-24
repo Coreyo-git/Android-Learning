@@ -27,6 +27,14 @@
         android:layout_margin="16dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnAddVehicle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add a new Vehicle"
+            android:layout_margin="16dp"
+            android:visibility="gone"
+            />
 
         <Button
             android:id="@+id/btnLogin"
@@ -38,7 +46,8 @@
             android:textColor="#77CBF1"
             android:layout_marginRight="8dp"
             android:paddingHorizontal="48dp"
-            android:backgroundTint="@color/black"/>
+            android:backgroundTint="@color/black"
+            android:visibility="gone"/>
         <Button
             android:id="@+id/btnSignup"
             android:layout_width="wrap_content"
@@ -49,6 +58,7 @@
             android:textColor="#045F88"
             android:layout_marginStart="8dp"
             android:paddingHorizontal="48dp"
-            android:backgroundTint="#C6CBEEF3"/>
+            android:backgroundTint="#C6CBEEF3"
+            android:visibility="gone"/>
     </LinearLayout>
 </LinearLayout>

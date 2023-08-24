@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.fleetmanagement.Utils.SharedPrefManager;
+
 public class SignupActivity extends AppCompatActivity {
 
     private EditText nameEditText;
@@ -32,6 +34,12 @@ public class SignupActivity extends AppCompatActivity {
             String password = passwordEditText.getText().toString();
             if(isValidSignUp(name, phoneNumber, email, password)){
                 Toast.makeText(SignupActivity.this, "Signup Successful", Toast.LENGTH_SHORT).show();
+                SharedPrefManager.setLoginState(true);
+                if(SharedPrefManager.isAdmin()) {
+                    SharedPrefManager.setAdmin(true);
+                } else {
+                    SharedPrefManager.setAdmin(false);
+                }
             } else {
                 Toast.makeText(SignupActivity.this, "Signup Failed", Toast.LENGTH_SHORT).show();
             }
