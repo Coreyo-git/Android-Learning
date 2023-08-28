@@ -23,8 +23,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         setViewIds();
 
-        emailEditText.setText("ex@ex.com");
-        passwordEditText.setText("ex123");
+        emailEditText.setText("ad@ad.com");
+        passwordEditText.setText("ad123");
 
         loginButton.setOnClickListener(view -> {
             String email = emailEditText.getText().toString();
