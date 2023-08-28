@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.fleetmanagement.DB.Vehicle;
 import com.example.fleetmanagement.Utils.SharedPrefManager;
 
 import java.util.ArrayList;
