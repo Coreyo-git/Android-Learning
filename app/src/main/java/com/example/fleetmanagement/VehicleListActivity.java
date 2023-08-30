@@ -109,14 +109,13 @@ public class VehicleListActivity extends AppCompatActivity {
 
     // Replace this method with your actual vehicle data
     private void getDataFromDatabase() {
-        // Retrieve all vehicles asynchronously using LiveData
+    // Retrieve all vehicles asynchronously using LiveData
         VehicleDao vehicleDao = MyApp.getAppDatabase().vehicleDao();
         LiveData<List<Vehicle>> vehiclesLiveData = vehicleDao.getAllVehicles();
-        vehiclesLiveData.observe(this, vehicles -> {
-            // Handle the list of vehicles here
-            vehicleList.clear();
-            vehicleList.addAll(vehicles);
-            vehicleAdapter.notifyDataSetChanged();
+        vehiclesLiveData.observe(this, vehicles -> { // Handle the list of vehicles here
+            vehicleList.clear(); // Removes all the existing data
+            vehicleList.addAll(vehicles); // Adding all the data from Database
+            vehicleAdapter.notifyDataSetChanged(); // Notifying the RecyclerView that the dataset has been changed through its adapter
         });
     }
 }
