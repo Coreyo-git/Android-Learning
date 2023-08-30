@@ -44,12 +44,10 @@ public class VehicleListActivity extends AppCompatActivity {
             Toast.makeText(VehicleListActivity.this,
                     vehicleList.get(position).getName(), Toast.LENGTH_SHORT).show();
 
-            String vehicleName = vehicleList.get(position).getName();
-            String vehicleType = vehicleList.get(position).getType();
+            Vehicle vehicle = vehicleList.get(position);
 
             Intent intent = new Intent(VehicleListActivity.this, VehicleDetailsActivity.class);
-            intent.putExtra("vehicleName", vehicleName);
-            intent.putExtra("vehicleType", vehicleType);
+            intent.putExtra("vehicleId",vehicle.id);
 
             startActivity(intent);
         });
