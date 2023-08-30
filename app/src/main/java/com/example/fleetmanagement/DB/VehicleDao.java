@@ -18,4 +18,7 @@ public interface VehicleDao {
     void delete(Vehicle vehicle);
     @Query("SELECT * FROM vehicles")
     LiveData<List<Vehicle>> getAllVehicles();
+
+    @Query("SELECT * FROM vehicles WHERE id = :vehicleId")
+    LiveData<Vehicle> getVehicleById(int vehicleId);
 }
