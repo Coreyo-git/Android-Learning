@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fleetmanagement.DB.Vehicle;
+import com.example.fleetmanagement.DB.VehicleDao;
+import com.example.fleetmanagement.Utils.MyApp;
 
 import java.util.Random;
 
@@ -27,18 +30,29 @@ public class VehicleDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vehicle_details);
-        Intent intent = getIntent();
-        Vehicle vehicle = genVehicle(intent.getStringExtra("vehicleName"), intent.getStringExtra("vehicleType"));
         setViewIds();
+        Intent intent = getIntent();
+        VehicleDao vehicleDao = MyApp.getAppDatabase().vehicleDao();
 
-        vehicleNumber.setText(vehicle.getNumber());
-        vehicleName.setText(vehicle.getName());
-        vehicleType.setText(vehicle.getType());
-        vehicleSource.setText(vehicle.getSourcePlace());
-        vehicleDestination.setText(vehicle.getDestinationPlace());
-        vehicleCurrentLocation.setText(vehicle.getCurrentLocation());
-        vehicleFuelStatus.setText(String.valueOf(vehicle.getFuelStatus()));
-        vehicleGoodsTemp.setText(String.valueOf(vehicle.getGoodsTemperature()));
+        if (getIntent().getIntExtra("vehicleId", -1) != -1){
+            int vehicleId = getIntent().getIntExtra("vehicleId", -1);
+
+            vehicleDao.getVehicleById(vehicleId).observe(this, vehicle -> {
+                genVehicleProps(vehicle);
+
+                vehicleNumber.setText(String.valueOf(vehicleId));
+                vehicleName.setText(vehicle.getName());
+                vehicleType.setText(vehicle.getType());
+                vehicleSource.setText(vehicle.getSourcePlace());
+                vehicleDestination.setText(vehicle.getDestinationPlace());
+                vehicleCurrentLocation.setText(vehicle.getCurrentLocation());
+                vehicleFuelStatus.setText(String.valueOf(vehicle.getFuelStatus()));
+                vehicleGoodsTemp.setText(String.valueOf(vehicle.getGoodsTemperature()));
+            });
+
+        }else {
+            Toast.makeText(this, "No Vehicle Id Found", Toast.LENGTH_SHORT).show();
+        }
 
         backButton.setOnClickListener(view -> {
             Intent gotoIntent = new Intent(VehicleDetailsActivity.this, VehicleListActivity.class);
@@ -59,15 +73,11 @@ public class VehicleDetailsActivity extends AppCompatActivity {
         backButton = findViewById(R.id.backButton);
     }
 
-    public Vehicle genVehicle(String name, String type) {
-        Random rand = new Random();
-        Vehicle vehicle = new Vehicle(name, type);
-        vehicle.setNumber(String.valueOf(rand.nextInt(101)));
+    public void genVehicleProps(Vehicle vehicle) {
         vehicle.setSourcePlace("Byron Bay");
         vehicle.setDestinationPlace("Brisbane");
         vehicle.setCurrentLocation("Helensvale");
         vehicle.setFuelStatus(55.5);
         vehicle.setGoodsTemperature(12.2);
-        return vehicle;
     }
 }
