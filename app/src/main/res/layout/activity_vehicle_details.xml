@@ -28,7 +28,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:height="30dp"
                 android:gravity="center_horizontal"
                 android:text="Vehicle #"
                 android:textSize="20sp"
@@ -38,7 +37,6 @@
                 android:id="@+id/vehicleNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:height="30dp"
                 android:gravity="center_horizontal"
                 android:text="Vehicle Number"
                 android:textSize="20sp"
@@ -54,7 +52,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:height="30dp"
                 android:gravity="center_horizontal"
                 android:text="Vehicle Name: "
                 android:textSize="19sp"
@@ -63,14 +60,13 @@
                 android:id="@+id/vehicleName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:height="30dp"
                 android:gravity="center_horizontal"
                 android:text="Vehicle Name"
                 android:textSize="19sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
-    <LinearLayout
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
@@ -79,7 +75,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:height="30dp"
             android:text="Vehicle Type: "
             android:textSize="18sp" />
         <TextView
@@ -87,7 +82,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:height="30dp"
             android:text="Vehicle Type"
             android:textSize="18sp" />
     </LinearLayout>
@@ -101,7 +95,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:height="30dp"
                 android:text="From: "
                 android:textSize="18sp" />
             <TextView
@@ -109,7 +102,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:height="30dp"
                 android:text="Vehicle Source Location"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -123,7 +115,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:height="30dp"
                 android:text="Dest: "
                 android:textSize="18sp" />
             <TextView
@@ -131,7 +122,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:height="30dp"
                 android:text="Vehicle Destination"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -146,7 +136,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:height="30dp"
                 android:text="Location: "
                 android:textSize="18sp" />
 
@@ -155,15 +144,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:height="30dp"
             android:text="Vehicle Current Location"
             android:textSize="18sp" />
         </LinearLayout>
 
-
-
-
-    <LinearLayout
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
@@ -172,7 +157,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:height="30dp"
             android:text="Goods Temp: "
             android:textSize="18sp" />
         <TextView
@@ -180,20 +164,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:height="30dp"
             android:text="0.0"
             android:textSize="18sp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:height="30dp"
             android:text="°C"
             android:textSize="18sp" />
 
     </LinearLayout>
 
-    <LinearLayout
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
@@ -202,7 +184,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:height="30dp"
             android:text="Fuel %"
             android:textSize="18sp" />
         <TextView
@@ -210,10 +191,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:height="30dp"
             android:text="22"
             android:textSize="18sp" />
+
+
     </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="36dp"
+                android:text="Delete" />
+
+            <Space
+                android:layout_width="16dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/updateButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="36dp"
+                android:text="Update" />
+        </LinearLayout>
+
         <Button
             android:id="@+id/backButton"
             android:layout_width="match_parent"
@@ -221,4 +230,5 @@
             android:layout_marginTop="36dp"
             android:text="Back" />
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>
