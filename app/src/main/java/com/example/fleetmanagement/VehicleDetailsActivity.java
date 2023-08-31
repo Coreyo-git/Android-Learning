@@ -12,8 +12,6 @@ import com.example.fleetmanagement.DB.Vehicle;
 import com.example.fleetmanagement.DB.VehicleDao;
 import com.example.fleetmanagement.Utils.MyApp;
 
-import java.util.Random;
-
 public class VehicleDetailsActivity extends AppCompatActivity {
     private TextView vehicleNumber;
     private TextView vehicleName;
@@ -24,6 +22,8 @@ public class VehicleDetailsActivity extends AppCompatActivity {
     private TextView vehicleFuelStatus;
     private TextView vehicleGoodsTemp;
     private Button backButton;
+    private Button updateButton;
+    private Button deleteButton;
 
 
     @Override
@@ -31,7 +31,6 @@ public class VehicleDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vehicle_details);
         setViewIds();
-        Intent intent = getIntent();
         VehicleDao vehicleDao = MyApp.getAppDatabase().vehicleDao();
 
         if (getIntent().getIntExtra("vehicleId", -1) != -1){
@@ -58,6 +57,11 @@ public class VehicleDetailsActivity extends AppCompatActivity {
             Intent gotoIntent = new Intent(VehicleDetailsActivity.this, VehicleListActivity.class);
             startActivity(gotoIntent);
         });
+
+        deleteButton.setOnClickListener(view -> {
+        });
+        updateButton.setOnClickListener(view -> {
+        });
     }
 
     private void setViewIds()
@@ -71,6 +75,8 @@ public class VehicleDetailsActivity extends AppCompatActivity {
         vehicleFuelStatus = findViewById(R.id.vehicleFuelStatus);
         vehicleGoodsTemp = findViewById(R.id.vehicleGoodsTemp);
         backButton = findViewById(R.id.backButton);
+        deleteButton = findViewById(R.id.deleteButton);
+        updateButton = findViewById(R.id.updateButton);
     }
 
     public void genVehicleProps(Vehicle vehicle) {
