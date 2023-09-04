@@ -46,7 +46,6 @@ public class VehicleDetailsActivity extends AppCompatActivity {
 
             vehicleDao.getVehicleById(vehicleId).observe(this, vehicle -> {
                 this.vehicle = vehicle;
-                genVehicleProps(vehicle);
 
                 vehicleNumber.setText(String.valueOf(vehicleId));
                 vehicleName.setText(vehicle.getName());
@@ -102,17 +101,8 @@ public class VehicleDetailsActivity extends AppCompatActivity {
         updateButton = findViewById(R.id.updateButton);
     }
 
-    public void genVehicleProps(Vehicle vehicle) {
-        vehicle.setLicensePlate("122ZXS");
-        vehicle.setSourcePlace("Byron Bay");
-        vehicle.setDestinationPlace("Brisbane");
-        vehicle.setCurrentLocation("Helensvale");
-        vehicle.setFuelStatus(55.5);
-        vehicle.setGoodsTemperature(12.2);
-    }
-
     private void updateTheVehicle() {
-        // Creating the view to create the dialog. We are re-using the dialog we created in Week-4 to add new vehicle.
+        // Creating the view to create the dialog.
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_add_vehicle, null);
         EditText editTextVehicleName = dialogView.findViewById(R.id.editTextVehicleName);
         EditText editTextVehicleType = dialogView.findViewById(R.id.editTextVehicleType);
