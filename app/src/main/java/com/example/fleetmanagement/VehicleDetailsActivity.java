@@ -18,6 +18,7 @@ import com.example.fleetmanagement.Utils.MyApp;
 
 public class VehicleDetailsActivity extends AppCompatActivity {
     private TextView vehicleNumber;
+    private TextView vehicleLicensePlate;
     private TextView vehicleName;
     private TextView vehicleType;
     private TextView vehicleSource;
@@ -49,6 +50,7 @@ public class VehicleDetailsActivity extends AppCompatActivity {
 
                 vehicleNumber.setText(String.valueOf(vehicleId));
                 vehicleName.setText(vehicle.getName());
+                vehicleLicensePlate.setText(vehicle.getLicensePlate());
                 vehicleType.setText(vehicle.getType());
                 vehicleSource.setText(vehicle.getSourcePlace());
                 vehicleDestination.setText(vehicle.getDestinationPlace());
@@ -87,6 +89,7 @@ public class VehicleDetailsActivity extends AppCompatActivity {
     private void setViewIds()
     {
         vehicleNumber = findViewById(R.id.vehicleNumber);
+        vehicleLicensePlate = findViewById(R.id.vehicleLicensePlate);
         vehicleName = findViewById(R.id.vehicleName);
         vehicleType = findViewById(R.id.vehicleType);
         vehicleSource = findViewById(R.id.vehicleSource);
@@ -100,6 +103,7 @@ public class VehicleDetailsActivity extends AppCompatActivity {
     }
 
     public void genVehicleProps(Vehicle vehicle) {
+        vehicle.setLicensePlate("122ZXS");
         vehicle.setSourcePlace("Byron Bay");
         vehicle.setDestinationPlace("Brisbane");
         vehicle.setCurrentLocation("Helensvale");

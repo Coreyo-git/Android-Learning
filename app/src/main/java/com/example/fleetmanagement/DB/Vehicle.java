@@ -9,7 +9,7 @@ public class Vehicle {
     public int id;
     private String name;
     private String type;
-    private String number;
+    private String licensePlate;
     private String sourcePlace;
     private String destinationPlace;
     private String currentLocation;
@@ -32,12 +32,12 @@ public class Vehicle {
     public void setType(String type) {
         this.type = type;
     }
-    public String getNumber() {
-        return number;
+    public String getLicensePlate() {
+        return licensePlate;
     }
 
-    public void setNumber(String vehicleNumber) {
-        this.number = vehicleNumber;
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
     }
 
     public String getSourcePlace() {
