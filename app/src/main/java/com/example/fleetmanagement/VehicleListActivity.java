@@ -75,13 +75,31 @@ public class VehicleListActivity extends AppCompatActivity {
 
         EditText editTextVehicleName = dialogView.findViewById(R.id.editTextVehicleName);
         EditText editTextVehicleType = dialogView.findViewById(R.id.editTextVehicleType);
+        EditText editTextVehicleLicensePlate = dialogView.findViewById(R.id.editTextVehicleLicensePlate);
+        EditText editTextVehicleSourcePlace = dialogView.findViewById(R.id.editTextVehicleSourcePlace);
+        EditText editTextVehicleDestinationPlace = dialogView.findViewById(R.id.editTextVehicleDestinationPlace);
+        EditText editTextVehicleCurrentLocation = dialogView.findViewById(R.id.editTextVehicleCurrentLocation);
+        EditText editTextVehicleGoodsTemperature = dialogView.findViewById(R.id.editTextVehicleGoodsTemperature);
+        EditText editTextVehicleFuelStatus = dialogView.findViewById(R.id.editTextVehicleFuelStatus);
 
         builder.setPositiveButton("Add", (dialog, which) -> {
             String vehicleName = editTextVehicleName.getText().toString();
             String vehicleType = editTextVehicleType.getText().toString();
+            String vehicleLicensePlate = editTextVehicleLicensePlate.getText().toString();
+            String vehicleSourcePlace = editTextVehicleSourcePlace.getText().toString();
+            String vehicleDestinationPlace = editTextVehicleDestinationPlace.getText().toString();
+            String vehicleCurrentLocation = editTextVehicleCurrentLocation.getText().toString();
+            Double vehicleGoodsTemperature = Double.parseDouble(editTextVehicleGoodsTemperature.getText().toString());
+            Double vehicleFuelStatus = Double.parseDouble(editTextVehicleFuelStatus.getText().toString());
 
             // Add the new vehicle to the list
             Vehicle vehicle = new Vehicle(vehicleName, vehicleType);
+            vehicle.setLicensePlate(vehicleLicensePlate);
+            vehicle.setSourcePlace(vehicleSourcePlace);
+            vehicle.setDestinationPlace(vehicleDestinationPlace);
+            vehicle.setCurrentLocation(vehicleCurrentLocation);
+            vehicle.setGoodsTemperature(vehicleGoodsTemperature);
+            vehicle.setFuelStatus(vehicleFuelStatus);
 
             VehicleDao vehicleDao = MyApp.getAppDatabase().vehicleDao();
             AsyncTask.execute(() -> {
