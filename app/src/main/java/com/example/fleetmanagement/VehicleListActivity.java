@@ -15,6 +15,7 @@ import android.widget.EditText;
 
 import com.example.fleetmanagement.DB.Vehicle;
 import com.example.fleetmanagement.DB.VehicleDao;
+import com.example.fleetmanagement.SensorUtil.SensorService;
 import com.example.fleetmanagement.Utils.MyApp;
 import com.example.fleetmanagement.Utils.SharedPrefManager;
 import java.util.ArrayList;
@@ -26,6 +27,8 @@ public class VehicleListActivity extends AppCompatActivity {
     private VehicleAdapter vehicleAdapter;
     private Button btnAddNewVehicle;
     private Button btnLogOut;
+
+    private Intent serviceIntent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,8 @@ public class VehicleListActivity extends AppCompatActivity {
         vehicleAdapter = new VehicleAdapter(vehicleList);
         recyclerView.setAdapter(vehicleAdapter);
 
+        manageSensorServices();
+        
         vehicleAdapter.setOnItemClickListener(position -> {
             Toast.makeText(VehicleListActivity.this,
                     vehicleList.get(position).getName(), Toast.LENGTH_SHORT).show();
@@ -60,11 +65,18 @@ public class VehicleListActivity extends AppCompatActivity {
         }else {
             btnAddNewVehicle.setVisibility(View.GONE);
         }
+        
 
         // Calls logout
         btnLogOut.setOnClickListener(view -> {
             handleLogout();
         });
+    }
+
+    private void manageSensorServices() {
+        // Start the SensorService
+        serviceIntent = new Intent(this, SensorService.class);
+        startService(serviceIntent);
     }
 
     private void manageNewVehicleFunctionality() {
