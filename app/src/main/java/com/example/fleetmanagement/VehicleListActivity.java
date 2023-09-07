@@ -5,7 +5,10 @@ import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -27,8 +30,9 @@ public class VehicleListActivity extends AppCompatActivity {
     private VehicleAdapter vehicleAdapter;
     private Button btnAddNewVehicle;
     private Button btnLogOut;
-
     private Intent serviceIntent;
+    private SensorDataReceiver dataReceiver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,10 +77,37 @@ public class VehicleListActivity extends AppCompatActivity {
         });
     }
 
+    private class SensorDataReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction() != null &&
+                    intent.getAction().equals("VEHICLE_SENSOR_DATA")) {
+                // Receive the sensor data and update the UI if required.
+            }
+        }
+    }
+
     private void manageSensorServices() {
         // Start the SensorService
         serviceIntent = new Intent(this, SensorService.class);
         startService(serviceIntent);
+
+        // Register the BroadcastReceiver
+        dataReceiver = new SensorDataReceiver();
+
+        // Filter that returns the sensor data
+        IntentFilter filter = new IntentFilter("VEHICL_SENSOR_DATA");
+
+        // registering the filter with our dataReceiver
+        registerReceiver(dataReceiver, filter);
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Unregister the BroadcastReceiver
+        if (dataReceiver != null) {
+            unregisterReceiver(dataReceiver);
+        }
     }
 
     private void manageNewVehicleFunctionality() {
