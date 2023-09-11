@@ -18,6 +18,7 @@ import android.widget.EditText;
 
 import com.example.fleetmanagement.DB.Vehicle;
 import com.example.fleetmanagement.DB.VehicleDao;
+import com.example.fleetmanagement.SensorUtil.AccelerometerData;
 import com.example.fleetmanagement.SensorUtil.SensorService;
 import com.example.fleetmanagement.Utils.MyApp;
 import com.example.fleetmanagement.Utils.SharedPrefManager;
@@ -83,6 +84,20 @@ public class VehicleListActivity extends AppCompatActivity {
             if (intent.getAction() != null &&
                     intent.getAction().equals("VEHICLE_SENSOR_DATA")) {
                 // Receive the sensor data and update the UI if required.
+                AccelerometerData accelerometerData = (AccelerometerData)
+                        intent.getSerializableExtra("accelerometerData");
+
+                // Making changes in the UI based on sensor data
+                if (accelerometerData != null && accelerometerData.getMagnitude()
+                        < 9.81){
+                    getWindow().getDecorView().setBackgroundColor(getResources().getColor
+                            (R.color.white, null));
+                }else {
+                    Toast.makeText(VehicleListActivity.this, "Danger!!!",
+                            Toast.LENGTH_SHORT).show();
+                    getWindow().getDecorView().setBackgroundColor(getResources().getColor
+                            (R.color.red, null));
+                }
             }
         }
     }
@@ -96,7 +111,7 @@ public class VehicleListActivity extends AppCompatActivity {
         dataReceiver = new SensorDataReceiver();
 
         // Filter that returns the sensor data
-        IntentFilter filter = new IntentFilter("VEHICL_SENSOR_DATA");
+        IntentFilter filter = new IntentFilter("VEHICLE_SENSOR_DATA");
 
         // registering the filter with our dataReceiver
         registerReceiver(dataReceiver, filter);
