@@ -83,7 +83,7 @@ public class VehicleListActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction() != null &&
                     intent.getAction().equals("VEHICLE_SENSOR_DATA")) {
-                // Receive the sensor data and update the UI if required.
+                // Receive the sensor data and update the UI.
                 AccelerometerData accelerometerData = (AccelerometerData)
                         intent.getSerializableExtra("accelerometerData");
 
